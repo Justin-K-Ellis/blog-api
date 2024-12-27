@@ -1,0 +1,49 @@
+@uri = http://localhost:3000/api/users
+
+# Get all users
+get {{uri}}
+
+###
+# Get a single user
+get {{uri}}/1
+
+###
+# Post a new user
+post {{uri}}
+Content-Type: application/json
+
+{
+    "username": "mike",
+    "email": "mike@example.com",
+    "password": "12345"
+}
+
+###
+# Update username by id
+put {{uri}}/username
+Content-Type: application/json
+
+{
+    "id": 1,
+    "username": "Bobby"
+}
+
+###
+# Update email by id
+put {{uri}}/email
+Content-Type: application/json
+
+{
+    "id": 1,
+    "email": "bobby@robert.gov"
+}
+
+###
+# Update password by id
+put {{uri}}/password
+Content-Type: : application/json
+
+{
+    "id": 1,
+    "password": "12345"
+}
