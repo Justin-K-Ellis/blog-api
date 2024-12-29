@@ -6,11 +6,6 @@ let app = express();
 let port = process.env.PORT || 3000;
 
 app.use(express.json());
-
-app.get("/", (_req, res) => {
-  res.json({ message: "Hello app!" });
-});
-
 app.use("/api", api);
 
 app.listen(port, () => {
