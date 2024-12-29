@@ -1,0 +1,51 @@
+@uri = http://localhost:3000/api/posts
+
+
+# Get all posts
+get {{uri}}
+
+###
+# Get post by id
+get {{uri}}/1
+
+###
+# Create post
+post {{uri}}
+Content-Type: application/json
+
+{
+    "title": "Test Post Two",
+    "content": "This is a post about something in particular.",
+    "authorId": 5
+}
+
+###
+# Update title & content of post
+put {{uri}}
+Content-Type: application/json
+
+{
+    "id": 6,
+    "title": "Test Post the Second",
+    "content": "This is a post about nothing in particular."
+}
+
+###
+# Update the title only
+put {{uri}}
+Content-Type: application/json
+
+{
+    "id": 6,
+    "title": "Test Post Part II"
+}
+
+###
+# Update the content only
+put {{uri}}
+Content-Type: application/json
+
+{
+    "id": 6,
+    "content": "This post will complete the system of German idealism."
+}

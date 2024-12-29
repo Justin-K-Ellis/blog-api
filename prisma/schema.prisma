@@ -19,7 +19,7 @@ model User {
   email        String    @unique
   password     String
   registeredOn DateTime  @default(now())
-  isAdmin      Boolean  @default(false)
+  isAdmin      Boolean   @default(false)
   posts        Post[]
   comments     Comment[]
 }
@@ -31,9 +31,8 @@ model Post {
   postedOn    DateTime  @default(now())
   isPublished Boolean   @default(true)
   author      User      @relation(fields: [authorId], references: [id])
-  authorId    Int       @unique
+  authorId    Int       
   comments    Comment[]
-  commentId   Int
   tags        Tag[]
 }
 
@@ -44,10 +43,10 @@ model Comment {
   author   User     @relation(fields: [authorId], references: [id])
   authorId Int
   Post     Post     @relation(fields: [postId], references: [id])
-  postId   Int      @unique
+  postId   Int      
 }
 
 model Tag {
-  id     Int   @id @default(autoincrement())
-  posts   Post[]
+  id    Int    @id @default(autoincrement())
+  posts Post[]
 }
