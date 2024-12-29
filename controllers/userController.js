@@ -2,11 +2,11 @@ import { Router } from "express";
 import prisma from "../prisma/pClient.js";
 import bcrypt from "bcrypt";
 
-let router = Router();
+let userRouter = Router();
 
 // GET
 // Get all users
-router.get("/", async (_req, res) => {
+userRouter.get("/", async (_req, res) => {
   try {
     let users = await prisma.user.findMany({
       select: {
@@ -26,7 +26,7 @@ router.get("/", async (_req, res) => {
 });
 
 // Get user by id
-router.get("/:userId", async (req, res) => {
+userRouter.get("/:userId", async (req, res) => {
   let userId = parseInt(req.params.userId);
   try {
     let user = await prisma.user.findUnique({
@@ -51,9 +51,8 @@ router.get("/:userId", async (req, res) => {
 });
 
 // POST
-router.post("/", async (req, res) => {
+userRouter.post("/", async (req, res) => {
   let { username, email, password, isAdmin } = req.body;
-  console.log(password);
   let salt = 10;
   try {
     let hashedPassword = await bcrypt.hash(password, salt);
@@ -76,7 +75,7 @@ router.post("/", async (req, res) => {
 
 // PUT
 // Update username by id
-router.put("/username", async (req, res) => {
+userRouter.put("/username", async (req, res) => {
   let { id, username } = req.body;
   try {
     let updatedUser = await prisma.user.update({
@@ -95,7 +94,7 @@ router.put("/username", async (req, res) => {
 });
 
 // Update email by id
-router.put("/email", async (req, res) => {
+userRouter.put("/email", async (req, res) => {
   let { id, email } = req.body;
   try {
     let updatedUser = await prisma.user.update({
@@ -112,7 +111,7 @@ router.put("/email", async (req, res) => {
 });
 
 // Update user password by id
-router.put("/password", async (req, res) => {
+userRouter.put("/password", async (req, res) => {
   let { id, password } = req.body;
   let salt = 10;
   try {
@@ -132,7 +131,7 @@ router.put("/password", async (req, res) => {
 
 // DELETE
 // Delete by id
-router.delete("/:userId", async (req, res) => {
+userRouter.delete("/:userId", async (req, res) => {
   let userId = parseInt(req.params.userId);
   try {
     let deletedUser = await prisma.user.delete({ where: { id: userId } });
@@ -146,7 +145,7 @@ router.delete("/:userId", async (req, res) => {
 });
 
 // Delete all users
-router.delete("/", async (req, res) => {
+userRouter.delete("/", async (req, res) => {
   try {
     let users = await prisma.user.deleteMany({});
     res.json(users);
@@ -157,4 +156,4 @@ router.delete("/", async (req, res) => {
   }
 });
 
-export { router };
+export default userRouter;
