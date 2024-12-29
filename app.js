@@ -3,7 +3,7 @@ import "dotenv/config";
 import api from "./routes.js";
 
 let app = express();
-let port = process.env.PORT;
+let port = process.env.PORT || 3000;
 
 app.use(express.json());
 
