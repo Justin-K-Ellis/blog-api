@@ -49,3 +49,7 @@ Content-Type: application/json
     "id": 6,
     "content": "This post will complete the system of German idealism."
 }
+
+###
+# Toggle post isPublished status
+put {{uri}}/published-status/1

@@ -1,0 +1,19 @@
+@uri = http://localhost:3000/api/comments
+
+# Get all comments for a post
+get {{uri}}/post/1
+
+###
+# Get a specific comment
+get {{uri}}/1
+
+###
+# Post a comment
+post {{uri}}
+Content-Type: application/json
+
+{
+    "postId": 1,
+    "authorId": 6,
+    "content": "This is my favorite post."
+}

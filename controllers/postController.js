@@ -8,7 +8,13 @@ let postRouter = Router();
 // Get all posts
 postRouter.get("/", async (_req, res) => {
   try {
-    let posts = await prisma.post.findMany();
+    let posts = await prisma.post.findMany({
+      include: {
+        _count: {
+          select: { comments: true },
+        },
+      },
+    });
     res.json(posts);
   } catch (error) {
     res.status(500).json({
