@@ -55,7 +55,57 @@ commentsController.post("/", async (req, res) => {
 });
 
 // PUT
+commentsController.put("/", async (req, res) => {
+  let { commentId, content } = req.body;
+  try {
+    let updatedComment = await prisma.comment.update({
+      where: { id: commentId },
+      data: {
+        content: content,
+      },
+    });
+    res.json(updatedComment);
+  } catch (error) {
+    res.status(500).json({
+      message: `There was a problem when updating comment ${commentId}.`,
+      error: error,
+    });
+  }
+});
 
 // DELETE
+// Delete a single comment by id
+commentsController.delete("/:commentId", async (req, res) => {
+  let commentId = parseInt(req.params.commentId);
+  try {
+    let deletedComment = await prisma.comment.delete({
+      where: { id: commentId },
+    });
+    res.json(deletedComment);
+  } catch (error) {
+    res.status(500).json({
+      message: `There was a problem when deleting comment ${commentId}.`,
+      error: error,
+    });
+  }
+});
+
+// Delete all comments on a specific post
+commentsController.delete("/post/:postId", async (req, res) => {
+  let postId = parseInt(req.params.postId);
+  try {
+    let deletedComments = await prisma.comment.deleteMany({
+      where: {
+        postId,
+      },
+    });
+    res.json(deletedComments);
+  } catch (error) {
+    res.status(500).json({
+      message: `There was a problem when deleting all comments on post ${postId}.`,
+      error: error,
+    });
+  }
+});
 
 export default commentsController;

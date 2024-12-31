@@ -1,7 +1,7 @@
 @uri = http://localhost:3000/api/comments
 
 # Get all comments for a post
-get {{uri}}/post/1
+get {{uri}}/post/6
 
 ###
 # Get a specific comment
@@ -13,7 +13,25 @@ post {{uri}}
 Content-Type: application/json
 
 {
-    "postId": 1,
+    "postId": 6,
     "authorId": 6,
-    "content": "This is my favorite post."
+    "content": "Test comment 3."
 }
+
+###
+# Update a comment
+put {{uri}}
+Content-Type: application/json
+
+{
+    "commentId": 4,
+    "content": "This is my absolute favorite post."
+}
+
+###
+# Delete a comment by id
+delete {{uri}}/5
+
+###
+# Delete all comments by post
+delete {{uri}}/post/6
