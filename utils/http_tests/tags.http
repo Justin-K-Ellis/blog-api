@@ -1,0 +1,35 @@
+@uri = http://localhost:3000/api/tags
+
+# Get all tags
+get {{uri}}/
+
+###
+# Get tag by id
+get {{uri}}/2
+
+###
+# Post a tag
+post {{uri}}
+Content-Type: application/json
+
+{
+    "name": "to-delete"
+}
+
+###
+# Update a tag
+put {{uri}}
+Content-Type: application/json
+
+{
+    "id": 2,
+    "name": "Philosophy"
+}
+
+###
+# Delete tag by id
+delete {{uri}}/3
+
+###
+# Delete all tags
+delete {{uri}}
