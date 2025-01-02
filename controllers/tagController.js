@@ -7,11 +7,30 @@ let tagRouter = Router();
 // Get all
 tagRouter.get("/", async (req, res) => {
   try {
-    let tags = await prisma.tag.findMany();
+    let tags = await prisma.tag.findMany({
+      include: {
+        posts: true,
+      },
+    });
     res.json(tags);
   } catch (error) {
     res.status(500).json({
       message: "There was a problem when fetching all tags.",
+      error: error,
+    });
+  }
+});
+
+// Get list of all tags
+tagRouter.get("/list", async (req, res) => {
+  try {
+    let tags = await prisma.tag.findMany({
+      orderBy: [{ name: "asc" }],
+    });
+    res.json(tags);
+  } catch (error) {
+    res.status(500).json({
+      message: "There was a problem when getting the list of tags.",
       error: error,
     });
   }

@@ -1,7 +1,11 @@
 @uri = http://localhost:3000/api/tags
 
-# Get all tags
+# Get all tags (with posts for corresponding tag)
 get {{uri}}/
+
+###
+# Get a list of tags
+get {{uri}}/list
 
 ###
 # Get tag by id
@@ -13,7 +17,7 @@ post {{uri}}
 Content-Type: application/json
 
 {
-    "name": "to-delete"
+    "name": "history"
 }
 
 ###

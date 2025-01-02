@@ -6,7 +6,7 @@ get {{uri}}
 
 ###
 # Get post by id
-get {{uri}}/1
+get {{uri}}/12
 
 ###
 # Create post
@@ -14,9 +14,10 @@ post {{uri}}
 Content-Type: application/json
 
 {
-    "title": "Test Post Two",
-    "content": "This is a post about something in particular.",
-    "authorId": 5
+    "title": "Test Post Six",
+    "content": "This post has one tag.",
+    "authorId": 5,
+    "tag": "philosophy"
 }
 
 ###
@@ -53,3 +54,23 @@ Content-Type: application/json
 ###
 # Toggle post isPublished status
 put {{uri}}/published-status/1
+
+###
+# Add a tag
+put {{uri}}/add-tag
+Content-Type: application/json
+
+{
+    "postId": 12,
+    "tag": "programming"
+}
+
+###
+# Remove a tag
+put {{uri}}/remove-tag
+Content-Type: application/json
+
+{
+    "postId": 12,
+    "tag": "programming"
+}
