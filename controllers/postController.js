@@ -1,7 +1,6 @@
 import { Router } from "express";
 import prisma from "../prisma/pClient.js";
 import bcrypt from "bcrypt";
-import tagRouter from "./tagController.js";
 
 let postRouter = Router();
 
@@ -49,7 +48,6 @@ postRouter.get("/:postId", async (req, res) => {
 
 // POST
 postRouter.post("/", async (req, res) => {
-  console.log(req.body);
   let { title, content, authorId, tag } = req.body;
   try {
     if (tag) {

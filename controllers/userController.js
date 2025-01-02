@@ -12,6 +12,7 @@ userRouter.get("/", async (_req, res) => {
       select: {
         id: true,
         username: true,
+        email: true,
         registeredOn: true,
         isAdmin: true,
       },
