@@ -12,12 +12,12 @@ get {{uri}}/12
 # Create post
 post {{uri}}
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1ZGVtYW4iLCJlbWFpbCI6ImR1ZGVAbWFuLmlvIiwicmVnaXN0ZXJlZE9uIjoiMjAyNC0xMi0yOVQxMTo1NzoyOS4zODFaIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzM1ODI2NTIyfQ.sF6M1JPH_F2mXzF_7AFAQ5C5xE-Ud-gTFM442nXq-ZQ
 
 {
-    "title": "Test Post Six",
-    "content": "This post has one tag.",
-    "authorId": 5,
-    "tag": "philosophy"
+    "title": "I Have the Authority",
+    "content": "I have the right to post!",
+    "authorId": 6
 }
 
 ###
@@ -74,3 +74,9 @@ Content-Type: application/json
     "postId": 12,
     "tag": "programming"
 }
+
+###
+# Auth test
+post {{uri}}/test
+Content-Type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1ZGVtYW4iLCJlbWFpbCI6ImR1ZGVAbWFuLmlvIiwicmVnaXN0ZXJlZE9uIjoiMjAyNC0xMi0yOVQxMTo1NzoyOS4zODFaIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzM1ODI2NTIyfQ.sF6M1JPH_F2mXzF_7AFAQ5C5xE-Ud-gTFM442nXq-ZQ
