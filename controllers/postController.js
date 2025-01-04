@@ -50,18 +50,6 @@ postRouter.get("/:postId", async (req, res) => {
 
 // POST
 
-// auth test
-postRouter.post("/test", expressjwt(jwtExpressOpts), (req, res) => {
-  console.log(req.auth);
-  if (req.auth && req.auth.isAdmin) {
-    res.json({
-      message: "go ahead an post, admin",
-    });
-  } else {
-    res.json("no post only read");
-  }
-});
-
 // Make a post
 postRouter.post("/", expressjwt(jwtExpressOpts), async (req, res) => {
   let { title, content, authorId, tag } = req.body;
