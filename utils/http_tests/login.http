@@ -5,6 +5,6 @@ post {{uri}}
 Content-Type: application/json
 
 {
-    "email": "dude@man.io",
+    "email": "jlke45@gmail.com",
     "password": "12345"
 }

@@ -37,7 +37,15 @@ postRouter.get("/:postId", async (req, res) => {
   try {
     let post = await prisma.post.findUnique({
       where: { id: postId },
-      include: { comments: true, tags: true },
+      include: {
+        comments: true,
+        tags: true,
+        author: {
+          select: {
+            username: true,
+          },
+        },
+      },
     });
     res.json(post);
   } catch (error) {
@@ -216,7 +224,8 @@ postRouter.delete("/:postId", expressjwt(jwtExpressOpts), async (req, res) => {
 });
 
 // Delete all posts
-postRouter.delete("/", async (req, res) => {
+postRouter.delete("/", expressjwt(jwtExpressOpts), async (req, res) => {
+  console.log(req.auth);
   if (req.auth && req.auth.isAdmin) {
     try {
       let posts = await prisma.post.deleteMany({});

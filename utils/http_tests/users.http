@@ -13,8 +13,8 @@ post {{uri}}
 Content-Type: application/json
 
 {
-    "username": "dudeman",
-    "email": "dude@man.io",
+    "username": "Justin",
+    "email": "jlke45@gmail.com",
     "password": "12345",
     "isAdmin": true
 }
@@ -48,3 +48,4 @@ Content-Type: : application/json
     "id": 1,
     "password": "12345"
 }
+

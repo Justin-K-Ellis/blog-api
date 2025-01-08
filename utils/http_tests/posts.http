@@ -12,12 +12,12 @@ get {{uri}}/12
 # Create post
 post {{uri}}
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1ZGVtYW4iLCJlbWFpbCI6ImR1ZGVAbWFuLmlvIiwicmVnaXN0ZXJlZE9uIjoiMjAyNC0xMi0yOVQxMTo1NzoyOS4zODFaIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzM1ODI2NTIyfQ.sF6M1JPH_F2mXzF_7AFAQ5C5xE-Ud-gTFM442nXq-ZQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikp1c3RpbiIsImVtYWlsIjoiamxrZTQ1QGdtYWlsLmNvbSIsInJlZ2lzdGVyZWRPbiI6IjIwMjUtMDEtMDVUMTM6NDM6MjMuNzk2WiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNjA4NTA5OX0.ScSQ75bF0MIX-dgLc_qHRiJhuRySaxzkmQqI5-oVL5o
 
 {
-    "title": "I Have the Authority",
+    "title": "This should let me post",
     "content": "I have the right to post!",
-    "authorId": 6
+    "authorId": 7
 }
 
 ###
@@ -80,3 +80,13 @@ Content-Type: application/json
 post {{uri}}/test
 Content-Type: application/json
 # Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1ZGVtYW4iLCJlbWFpbCI6ImR1ZGVAbWFuLmlvIiwicmVnaXN0ZXJlZE9uIjoiMjAyNC0xMi0yOVQxMTo1NzoyOS4zODFaIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNzM1ODI2NTIyfQ.sF6M1JPH_F2mXzF_7AFAQ5C5xE-Ud-gTFM442nXq-ZQ
+
+###
+# Delete all posts
+delete {{uri}}
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikp1c3RpbiIsImVtYWlsIjoiamxrZTQ1QGdtYWlsLmNvbSIsInJlZ2lzdGVyZWRPbiI6IjIwMjUtMDEtMDVUMTM6NDM6MjMuNzk2WiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNjA4NTA5OX0.ScSQ75bF0MIX-dgLc_qHRiJhuRySaxzkmQqI5-oVL5o
+
+###
+# Delete a post by id
+delete {{uri}}/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikp1c3RpbiIsImVtYWlsIjoiamxrZTQ1QGdtYWlsLmNvbSIsInJlZ2lzdGVyZWRPbiI6IjIwMjUtMDEtMDVUMTM6NDM6MjMuNzk2WiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTczNjA4NTA5OX0.ScSQ75bF0MIX-dgLc_qHRiJhuRySaxzkmQqI5-oVL5o
