@@ -38,7 +38,17 @@ postRouter.get("/:postId", async (req, res) => {
     let post = await prisma.post.findUnique({
       where: { id: postId },
       include: {
-        comments: true,
+        comments: {
+          select: {
+            id: true,
+            content: true,
+            author: {
+              select: {
+                username: true,
+              },
+            },
+          },
+        },
         tags: true,
         author: {
           select: {
