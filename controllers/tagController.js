@@ -57,7 +57,17 @@ tagRouter.get("/name/:tagName", async (req, res) => {
     const tag = await prisma.tag.findMany({
       where: { name: tagName },
       include: {
-        posts: true,
+        posts: {
+          include: {
+            tags: true,
+            author: {
+              select: { username: true },
+            },
+            _count: {
+              select: { comments: true },
+            },
+          },
+        },
       },
     });
     res.json(tag);
