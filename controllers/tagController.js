@@ -50,6 +50,25 @@ tagRouter.get("/:tagId", async (req, res) => {
   }
 });
 
+// Get tag with posts by name
+tagRouter.get("/name/:tagName", async (req, res) => {
+  let tagName = req.params.tagName;
+  try {
+    const tag = await prisma.tag.findMany({
+      where: { name: tagName },
+      include: {
+        posts: true,
+      },
+    });
+    res.json(tag);
+  } catch (error) {
+    res.status(500).json({
+      message: `There was a problem when fetching tag '${tagName}'.`,
+      error: error,
+    });
+  }
+});
+
 // POST
 tagRouter.post("/", async (req, res) => {
   let { name } = req.body;
